@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_invoice_inherit_template">
+        <t t-call="report.external_layout">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="invoice_report.invoice_report_layout">
+                    <div class="page">
+                        <table style="height: 166px;" width="960">
+                            <tbody>
+                                <tr>
+                                    <td style="width: 963px; text-align: left;">
+                                        <table style="height: 5px; float: right; width: 387px;">
+                                            <tbody>
+                                                <tr style="">
+                                                </tr>
+                                                <tr style=""/>
+                                                <td style="text-align:right;font-size:18px;White-space: nowrap;">
+                                                    <t t-esc="doc.payment_term_id.name"/>
+                                                </td>
+                                                <td style="text-align:right;font-size:18px;White-space: nowrap;">
+                                                    <t t-esc="doc.number"/>
+                                                </td>
+
+
+                                                <tr>
+                                                    <td style="text-align:right;font-size:12px;White-space: nowrap;">
+                                                        .
+
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="text-align:right;font-size:12px;White-space: nowrap;">
+                                                        .
+
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="text-align:right;font-size:12px;White-space: nowrap;">
+                                                        .
+
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <br>
+                                                        <td style="text-align:right;font-size:18px;White-space: nowrap;">
+                                                            <t t-esc="doc.date_invoice"/>
+                                                        </td>
+                                                    </br>
+                                                </tr>
+
+
+                                            </tbody>
+                                        </table>
+                                        <table style="height: 10px; width: 420px; float: left;">
+                                            <tbody>
+                                                <tr>
+                                                    <tr>
+                                                        <td style="text-align:left;font-size:22px;White-space: nowrap;">
+                                                            <t t-esc="doc.partner_id.name"/>
+                                                        </td>
+                                                    </tr>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style=" line-height;height: 645px;" width="960">
+                            <!--                            <colgroup>-->
+                            <!--                                <col style="width='13%',float: right"/>-->
+                            <!--                                <col width='30%'/>-->
+                            <!--                                <col width='8%'/>-->
+                            <!--                                <col width='8%'/>-->
+                            <!--                                <col width='10%'/>-->
+                            <!--                                <col width='37%'/>-->
+                            <!--                                <col width='10%'/>-->
+                            <!--                                <col width='8%'/>-->
+                            <!--                            </colgroup>-->
+
+                            <colgroup>
+                                <col width='1%'/>
+                                <col width='12%'/>
+                                <col width='12%'/>
+                                <col width='12%'/>
+                                <col width='12%'/>
+                                <col width='33%'/>
+                                <col width='13%'/>
+                                <col style="width='13%',float: right"/>
+                            </colgroup>
+                            <t t-set="counter" t-value="1"/>
+                            <t t-foreach="doc.invoice_line_ids" t-as="line">
+                                <tr>
+                                    <td style="margin :0;">
+                                        <t t-esc="line.price_subtotal"/>
+                                    </td>
+
+                                    <td style="margin :0;">
+                                        <t t-esc="line.invoice_line_tax_ids.name"/>
+                                    </td>
+                                    <td style="margin :0;">
+                                        <t t-esc="line.price_unit"/>
+                                    </td>
+                                    <td style="margin :0;">
+                                        <t t-esc="line.quantity"/>
+                                    </td>
+                                    <td style="margin :0;">
+                                        <t t-esc="line.discount"/>
+                                    </td>
+                                    <td style="margin :0;">
+                                        <t t-esc="line.name"/>
+                                    </td>
+                                    <td style="margin :0;">
+                                        <t t-esc="line.product_id.default_code"/>
+                                    </td>
+                                    <td style="margin :0;">
+                                        <t t-esc="counter"/>
+                                        <t t-set="counter" t-value="counter+1"/>
+                                    </td>
+
+
+                                    <!--                                    <td>-->
+                                    <!--                                        <t t-esc="counter"/>-->
+                                    <!--                                        <t t-set="counter" t-value="counter+1"/>-->
+                                    <!--                                    </td>-->
+                                    <!--                                    <td>-->
+                                    <!--                                        <t t-esc="line.product_id.default_code"/>-->
+                                    <!--                                    </td>-->
+                                    <!--                                    <td>-->
+                                    <!--                                        <t t-esc="line.name"/>-->
+                                    <!--                                    </td>-->
+                                    <!--                                    <td>-->
+                                    <!--                                        <t t-esc="line.discount"/>-->
+                                    <!--                                    </td>-->
+                                    <!--                                    <td>-->
+                                    <!--                                        <t t-esc="line.quantity"/>-->
+                                    <!--                                    </td>-->
+                                    <!--                                    <td>-->
+                                    <!--                                        <t t-esc="line.price_unit"/>-->
+                                    <!--                                    </td>-->
+                                    <!--                                    <td>-->
+                                    <!--                                        <t t-esc="line.invoice_line_tax_ids.name"/>-->
+                                    <!--                                    </td>-->
+                                    <!--                                    <td>-->
+                                    <!--                                        <t t-esc="line.price_subtotal"/>-->
+                                    <!--                                    </td>-->
+                                </tr>
+                            </t>
+
+                        </table>
+                        <table width="960">
+                            <tbody>
+                                <tr>
+                                    <td style="width: 963px; text-align: left;">
+                                        <table style="width: 180px; float: right;">
+                                            <tbody>
+                                                <tr>
+                                                    <tr>
+                                                        <!--                                                    <td style="height: 700px;border: 1px solid black;width: 448px; text-align: right;"></td>-->
+                                                        <!--                                                    <td style="border: 1px solid black;width: 448px; text-align: right;"></td>-->
+                                                        <td style="width: 448px; text-align: right;font-size:26px;">
+                                                            <t t-esc="doc.amount_untaxed"/>
+                                                        </td>
+                                                    </tr>
+                                                    <br>
+                                                        <tr>
+                                                            <!--                                                    <td style="border: 1px solid black;width: 448px; text-align: right;"></td>-->
+                                                            <!--                                                    <td style="border: 1px solid black;width: 448px; text-align: right;"></td>-->
+                                                            <td style="width: 448px; text-align: right;font-size:28px;">
+                                                                <t t-esc="doc.amount_discount"/>
+
+                                                            </td>
+                                                        </tr>
+                                                    </br>
+                                                    <tr>
+                                                        <!--                                                    <td style="border: 1px solid black;width: 448px; text-align: right;"></td>-->
+                                                        <!--                                                    <td style="border: 1px solid black;width: 448px; text-align: right;"></td>-->
+                                                        <td style="width: 448px; text-align: right;font-size:22px;">
+                                                            <t t-esc="doc.amount_tax"/>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <!--                                                    <td style="border: 1px solid black;width: 448px; text-align: right;"></td>-->
+                                                        <!--                                                    <td style="border: 1px solid black;width: 448px; text-align: right;"></td>-->
+                                                        <td style="width: 448px; text-align: right;font-size:36px;">
+                                                            <t t-esc="doc.amount_total"/>
+                                                        </td>
+                                                    </tr>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <!--        <record id="paperformat_invoice" model="report.paperformat">-->
+    <!--        <field name="name">Invoice Format</field>-->
+    <!--        <field name="format">A4</field>-->
+    <!--        <field name="default" eval="False"/>-->
+    <!--        <field name="orientation">Portrait</field>-->
+    <!--        <field name="margin_top">0</field>-->
+    <!--        <field name="margin_bottom">20</field>-->
+    <!--        <field name="margin_left">5</field>-->
+    <!--        <field name="margin_right">5</field>-->
+    <!--        <field name="header_line" eval="False"/>-->
+    <!--        <field name="header_spacing">20</field>-->
+
+    <!--        </record>-->
+
+    <report
+            id="report_invoice_inherit_report"
+            model='account.invoice'
+            string="طباعه الفاتورة"
+            report_type="qweb-pdf"
+
+            name="invoice_report.report_invoice_inherit_template"
+            file="invoice_report.report_invoice_inherit_template"/>
+</odoo>
